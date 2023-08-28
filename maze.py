@@ -56,7 +56,8 @@ def choose_cell(stack, cells, visited):
         stack.pop()
         return
     size = random.randint(1, 2)
-    for i in range(size):
+    i = 0
+    while i < size:
         choice = sur[random.randint(0, len(sur)-1)]
         direction = choice[2]
         visited.append((choice[0], choice[1]))
@@ -75,6 +76,8 @@ def choose_cell(stack, cells, visited):
             cell.left = True
             new_cell.right = True
         choose_cell(stack, cells, visited)
+        i+=1
+    choose_cell(stack, cells, visited)
 def generate_maze(stack, cells, visited):
     length = len(cells)*len(cells[0])
     while len(visited) < length:
